@@ -21,7 +21,7 @@ function app_scripts() {
 	$js_folder	=  get_template_directory_uri() . '/_assets/_js';
 
 	// versão
-	$versao 	= 3;
+	$versao 	= rand(0,999);
 
 
 	// jQuery
@@ -36,6 +36,11 @@ function app_scripts() {
 	// tema
 	
 	wp_enqueue_style( 'theme', get_stylesheet_uri(), 1, $versao, 'all' );
+	wp_enqueue_script( 'app', $js_folder . '/app.js', null, $versao, true );
+
+	$wpVars = [ 'ajaxurl' => admin_url( 'admin-ajax.php' ) ];
+
+	wp_localize_script( 'app', 'wp', $wpVars );
 	
 
 }
