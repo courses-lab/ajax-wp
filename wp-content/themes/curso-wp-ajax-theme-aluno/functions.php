@@ -3,6 +3,9 @@
 /*********************************************
 * INCLUDES
 **********************************************/
+include("_ajax/listar-posts.php");
+include("_ajax/detalhes-post.php");
+include("_ajax/curtir-post-toggle.php");
 include("_inc/limpar-codigo.php");
 
 
