@@ -24,7 +24,7 @@
 
 			<!-- ajax load -->
 			<div class="ajax-info" id="loading">
-				<div class="progress">
+				<div class="progress d-none">
 					<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:100%;"></div>
 				</div>
 			</div>

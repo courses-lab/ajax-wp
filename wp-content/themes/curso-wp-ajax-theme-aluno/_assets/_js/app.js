@@ -12,11 +12,11 @@ jQuery(function($){
 				action: 'listarPosts'
 			},
 			beforeSend: function(){
-				console.log('carregando posts...');
+				$('.progress').removeClass('d-none');
 			}
 		})
 		.done(function(reposta){
-			console.log(reposta);
+			$('.progress').addClass('d-none');
 		})
 		.fail(function(){
 			console.log('Ops! Algo deu errado.');
@@ -70,11 +70,11 @@ jQuery(function($){
 				action: 'detalhesPost'
 			},
 			beforeSend: function(){
-				console.log('carregando detalhes do posts...');
+				$('.progress').removeClass('d-none');
 			}
 		})
 		.done(function(reposta){
-			console.log(reposta);
+			$('.progress').addClass('d-none');
 		})		
 
 	}
@@ -99,11 +99,11 @@ jQuery(function($){
 				action: 'curtirPostToggle'
 			},
 			beforeSend: function(){
-				console.log('carregando curtir posts...');
+				$('.progress').removeClass('d-none');
 			}
 		})
 		.done(function(reposta){
-			console.log(reposta);
+			$('.progress').addClass('d-none');
 		})	
 
 	}
