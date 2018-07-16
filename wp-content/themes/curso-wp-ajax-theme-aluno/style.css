@@ -61,7 +61,7 @@ main{
 	top:8px;
 	right:10px;
 	z-index:10;
-	display:none;
+	/*display:none;*/
 }
 
 .jumbotron {

@@ -14,7 +14,7 @@
 
 			<!-- busca rápida -->
 			<section class="busca-rapida">
-				<button type="button" id="btn-limpar" class="btn btn-danger btn-sm">Limpar</button>
+				<button type="button" id="btn-limpar" class="btn btn-danger btn-sm d-none">Limpar</button>
 				<div class="input-group">
 					<div class="input-group-addon">Buscar</div>
 					<input type="text" id="campo-busca" class="form-control form-control-lg" placeholder="O que você procura?">

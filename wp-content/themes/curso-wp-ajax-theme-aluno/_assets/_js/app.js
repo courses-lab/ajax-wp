@@ -1,10 +1,6 @@
 jQuery(function($){
 	/*****************************
 	* Listar Posts
-	
-	(x) função php
-	(x) admin-ajax.php
-	() função js
 	*****************************/
 
 	var ListarPostsAjax = function(){
@@ -45,6 +41,21 @@ jQuery(function($){
 		$('.page-item').removeClass('active');
 		$(this).addClass('active');
 	});
+
+	// Ação do botão limpar busca
+	$('#btn-limpar').on('click', function(){
+		ListarPostsAjax();
+
+		$(this).addClass('d-none');
+		$('#campo-busca').val('');
+	});	
+
+	// Ação ao digitar uma palavra na busca
+	$('#campo-busca').on('keyup', function(){
+		ListarPostsAjax();
+
+		$('#btn-limpar').removeClass('d-none');
+	});		
 
 	/*****************************
 	* Detalhe Post
