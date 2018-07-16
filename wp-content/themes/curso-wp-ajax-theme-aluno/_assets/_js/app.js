@@ -30,6 +30,22 @@ jQuery(function($){
 
 	ListarPostsAjax();
 
+	// Ação do botão da categoria
+	$('.list-group-item').on('click', function(){
+		ListarPostsAjax();
+
+		$('.list-group-item').removeClass('active');
+		$(this).addClass('active');
+	});
+
+	// Ação do botão da paginação
+	$('.page-item').on('click', function(){
+		ListarPostsAjax();
+
+		$('.page-item').removeClass('active');
+		$(this).addClass('active');
+	});
+
 	/*****************************
 	* Detalhe Post
 	*****************************/
@@ -54,6 +70,11 @@ jQuery(function($){
 
 	// detalhesPostsAjax();
 
+	// Ação do botão leia mais
+	$('.btn-detalhes').on('click', function(){
+		detalhesPostsAjax();
+	});
+
 	/*****************************
 	* Curtir e Descurtir Posts
 	******************************/	
@@ -77,5 +98,10 @@ jQuery(function($){
 	}
 
 	// curtirPostToggleAjax();
+
+	// Ação do botão curtir
+	$('.btn-curtir').on('click', function(){
+		curtirPostToggleAjax();
+	});
 
 })
