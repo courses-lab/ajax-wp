@@ -3,7 +3,7 @@
 ?>
 
 <ul class="list-group">
-	<li class="list-group-item active">Todos</li>
+	<li class="list-group-item active" data-slug="">Todos</li>
 
 	<?php if( !empty($categorias) && !is_wp_error($categorias) ): ?>
 		<?php foreach ($categorias as $categoria): ?>

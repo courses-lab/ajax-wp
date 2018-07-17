@@ -4,15 +4,17 @@ jQuery(function($){
 	*****************************/
 
 	var page = 1;
+	var slug = $('.list-group-item.active').data('slug');
 
-	var ListarPostsAjax = function(page){
+	var ListarPostsAjax = function(page, slug){
 
 		$.ajax({
 			url: wp.ajaxurl,
 			type: 'GET',
 			data: {
 				action: 'listarPosts',
-				page: page
+				page: page,
+				slug: slug
 			},
 			beforeSend: function(){
 				$('.progress').removeClass('d-none');
@@ -28,11 +30,12 @@ jQuery(function($){
 
 	}
 
-	ListarPostsAjax(page);
+	ListarPostsAjax(page, slug);
 
 	// Ação do botão da categoria
 	$('.list-group-item').on('click', function(){
-		ListarPostsAjax();
+		slug = $(this).data('slug');
+		ListarPostsAjax(page, slug);
 
 		$('.list-group-item').removeClass('active');
 		$(this).addClass('active');
@@ -41,7 +44,7 @@ jQuery(function($){
 	// Ação do botão da paginação
 	$('body').on('click', '.page-item', function(){
 		page = $(this).find('span').text();
-		ListarPostsAjax(page);
+		ListarPostsAjax(page, slug);
 
 		$('.page-item').removeClass('active');
 		$(this).addClass('active');
@@ -49,7 +52,7 @@ jQuery(function($){
 
 	// Ação do botão limpar busca
 	$('#btn-limpar').on('click', function(){
-		ListarPostsAjax();
+		ListarPostsAjax(1);
 
 		$(this).addClass('d-none');
 		$('#campo-busca').val('');
@@ -57,7 +60,7 @@ jQuery(function($){
 
 	// Ação ao digitar uma palavra na busca
 	$('#campo-busca').on('keyup', function(){
-		ListarPostsAjax();
+		ListarPostsAjax(1);
 
 		$('#btn-limpar').removeClass('d-none');
 	});		
