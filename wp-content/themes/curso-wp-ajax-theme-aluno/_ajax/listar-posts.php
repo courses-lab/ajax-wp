@@ -42,7 +42,7 @@
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
 							<?php for($i=1; $i<= $totalPages; $i++): ?>
-								<li class="page-item <?php echo ($i == $page)? 'active' : ''; ?>"><span class="page-link"><?php echo $i; ?></a></li>
+								<li class="page-item <?php echo ($i == $page)? 'active' : ''; ?>"><span class="page-link"><?php echo $i; ?></span></li>
 							<?php endfor; ?>	
 						</ul>
 					</nav>

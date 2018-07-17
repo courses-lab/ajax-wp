@@ -28,7 +28,7 @@ jQuery(function($){
 
 	}
 
-	ListarPostsAjax();
+	ListarPostsAjax(page);
 
 	// Ação do botão da categoria
 	$('.list-group-item').on('click', function(){
