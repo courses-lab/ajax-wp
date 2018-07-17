@@ -31,37 +31,7 @@
 			<!-- fim ajax load -->
 
 			<!-- lista posts -->
-			<section class="lista-posts">
-
-				<!-- item -->
-				<div class="item">
-					<div class="card">
-						<div class="card-body">
-							<h4>Título do post</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus reiciendis excepturi nulla nesciunt voluptatum ipsum numquam, obcaecati, suscipit fugiat sequi, est repellat iste, unde eveniet vitae blanditiis quos eos tempora!</p>
-						</div>
-						<div class="card-footer text-right">
-							<button type="button" class="btn btn-sm btn-primary btn-detalhes" data-toggle="modal" data-target="#detalhes-post">Leia mais</button>
-							<button type="button" class="btn btn-sm btn-info btn-curtir"><span class="text">Gostei</span> <span class="badge badge-light">0</span></button>
-						</div>
-					</div>
-				</div>
-				<!-- fim item -->
-
-				<!-- item -->
-				<div class="item">
-					<div class="card">
-						<div class="card-body">
-							<h4>Título do post</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus reiciendis excepturi nulla nesciunt voluptatum ipsum numquam, obcaecati, suscipit fugiat sequi, est repellat iste, unde eveniet vitae blanditiis quos eos tempora!</p>
-						</div>
-						<div class="card-footer text-right">
-							<button type="button" class="btn btn-sm btn-primary btn-detalhes" data-toggle="modal" data-target="#detalhes-post">Leia mais</button>
-							<button type="button" class="btn btn-sm btn-info btn-curtir"><span class="text">Gostei</span> <span class="badge badge-light">0</span></button>
-						</div>
-					</div>
-				</div>
-				<!-- fim item -->
+			<section class="lista-posts" id="lista-posts">
 
 			</section>
 			<!-- fim lista posts -->

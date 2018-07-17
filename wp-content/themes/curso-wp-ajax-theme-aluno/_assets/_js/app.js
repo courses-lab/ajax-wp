@@ -17,6 +17,7 @@ jQuery(function($){
 		})
 		.done(function(reposta){
 			$('.progress').addClass('d-none');
+			$('#lista-posts').html(reposta);
 		})
 		.fail(function(){
 			console.log('Ops! Algo deu errado.');
