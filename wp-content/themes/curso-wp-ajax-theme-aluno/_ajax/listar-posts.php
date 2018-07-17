@@ -9,7 +9,8 @@
 			'post_type' => 'post',
 			'posts_per_page' => 2,
 			'paged' => ($page) ? $page : 1,
-			'category_name' => $slug
+			'category_name' => $slug,
+			's' => ''
 		];
 		
 		$posts = new WP_Query($args);
