@@ -69,20 +69,23 @@ jQuery(function($){
 	* Detalhe Post
 	*****************************/
 
-	var detalhesPostsAjax = function(){
+	var detalhesPostsAjax = function(id){
 
 		$.ajax({
 			url: wp.ajaxurl,
 			type: 'GET',
 			data: {
-				action: 'detalhesPost'
+				action: 'detalhesPost',
+				id: id
 			},
 			beforeSend: function(){
 				$('.progress').removeClass('d-none');
 			}
 		})
-		.done(function(reposta){
+		.done(function(resposta){
 			$('.progress').addClass('d-none');
+			$('#detalhes-post').html(resposta);
+			$('#detalhes-post').modal('show');
 		})		
 
 	}
@@ -90,8 +93,9 @@ jQuery(function($){
 	// detalhesPostsAjax();
 
 	// Ação do botão leia mais
-	$('.btn-detalhes').on('click', function(){
-		detalhesPostsAjax();
+	$('body').on('click', '.btn-detalhes', function(){
+		let id = $(this).closest('.item').data('id');
+		detalhesPostsAjax(id);
 	});
 
 	/*****************************

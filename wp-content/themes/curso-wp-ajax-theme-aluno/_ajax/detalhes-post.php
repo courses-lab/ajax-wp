@@ -1,7 +1,7 @@
 <?php
 
 	function detalhesPost() {
-		echo "detalhesPost";
+		get_template_part( '_parts/detalhes' );
 		exit;
 	}
 

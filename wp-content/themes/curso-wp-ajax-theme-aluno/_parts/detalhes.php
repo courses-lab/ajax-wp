@@ -1,5 +1,6 @@
 <?php 
-	$detalhes = get_post( 34 );
+	$id = $_GET['id'];
+	$detalhes = get_post( $id );
 ?>
 <div class="modal-dialog modal-lg">
 	<div class="modal-content">

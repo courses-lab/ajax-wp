@@ -46,7 +46,5 @@
 </div>
 
 <!-- modal -->
-<div class="modal fade" id="detalhes-post">
-	<?php get_template_part( '_parts/detalhes' ); ?>	
-</div>
+<div class="modal fade" id="detalhes-post"><!-- conteúdo dinâmico --></div>
 <?php get_footer(); ?>
