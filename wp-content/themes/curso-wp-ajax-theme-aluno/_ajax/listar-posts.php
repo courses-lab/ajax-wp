@@ -2,10 +2,12 @@
 
 	function listarPosts() {
 
+		$page = $_GET['page'];
+
 		$args  =  [ 
 			'post_type' => 'post',
 			'posts_per_page' => 2,
-			'paged' => 1
+			'paged' => ($page) ? $page : 1
 		];
 		
 		$posts = new WP_Query($args);
@@ -40,7 +42,7 @@
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
 							<?php for($i=1; $i<= $totalPages; $i++): ?>
-								<li class="page-item <?php echo ($i == 1)? 'active' : ''; ?>"><span class="page-link"><?php echo $i; ?></a></li>
+								<li class="page-item <?php echo ($i == $page)? 'active' : ''; ?>"><span class="page-link"><?php echo $i; ?></a></li>
 							<?php endfor; ?>	
 						</ul>
 					</nav>

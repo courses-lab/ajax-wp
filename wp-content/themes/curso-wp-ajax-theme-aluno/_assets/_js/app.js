@@ -3,13 +3,16 @@ jQuery(function($){
 	* Listar Posts
 	*****************************/
 
-	var ListarPostsAjax = function(){
+	var page = 1;
+
+	var ListarPostsAjax = function(page){
 
 		$.ajax({
 			url: wp.ajaxurl,
 			type: 'GET',
 			data: {
-				action: 'listarPosts'
+				action: 'listarPosts',
+				page: page
 			},
 			beforeSend: function(){
 				$('.progress').removeClass('d-none');
@@ -36,8 +39,9 @@ jQuery(function($){
 	});
 
 	// Ação do botão da paginação
-	$('.page-item').on('click', function(){
-		ListarPostsAjax();
+	$('body').on('click', '.page-item', function(){
+		page = $(this).find('span').text();
+		ListarPostsAjax(page);
 
 		$('.page-item').removeClass('active');
 		$(this).addClass('active');
