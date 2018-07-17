@@ -40,13 +40,7 @@
 		<div class="col-md-3">
 
 			<!-- categorias -->
-			<ul class="list-group">
-				<li class="list-group-item active">Todos</li>
-				<li class="list-group-item">Categoria 1</li>
-				<li class="list-group-item">Categoria 2</li>
-				<li class="list-group-item">Categoria 3</li>
-				<li class="list-group-item">Categoria 4</li>
-			</ul>
+			<?php get_template_part( '_parts/categorias' ); ?>	
 			<!-- fim categorias -->
 
 		</div>
