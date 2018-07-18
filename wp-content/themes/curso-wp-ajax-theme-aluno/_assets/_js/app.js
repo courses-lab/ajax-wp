@@ -27,9 +27,10 @@ jQuery(function($){
 				}
 			}
 		})
-		.done(function(reposta){
+		.done(function(resposta){
 			$('.progress').addClass('d-none');
-			$('#lista-posts').html(reposta);
+			$('#lista-posts').html(resposta);
+			visitantesLikes();
 		})
 		.fail(function(){
 			console.log('Ops! Algo deu errado.');
@@ -134,7 +135,7 @@ jQuery(function($){
 				$('.progress').removeClass('d-none');
 			}
 		})
-		.done(function(reposta){
+		.done(function(resposta){
 			$('.progress').addClass('d-none');
 			
 			if(tipo == 'like') {
@@ -158,7 +159,37 @@ jQuery(function($){
 	$('body').on('click', '.btn-curtir', function(){
 		let id = $(this).closest('.item').data('id');
 		let tipo = $(this).data('tipo');
+
 		curtirPostToggleAjax(id, tipo);
+
+		let salvos = localStorage.getItem('likes');
+
+		if(!salvos) {
+			localStorage.setItem('likes', id.toString());
+		} else {
+			salvos = salvos.split(',');
+			let item = $.inArray(id.toString(), salvos);
+
+			if(item == -1) {
+				salvos.push(id.toString());
+			} else {
+				salvos.splice(item, 1);
+			}
+
+			localStorage.setItem('likes', salvos);
+		}
 	});
+
+	var visitantesLikes = function(){
+		let salvos = localStorage.getItem('likes');
+
+		if(salvos) {
+			salvos = salvos.split(',');
+			salvos.forEach( function(id){
+				$('[data-id='+ id +'] .btn-curtir').removeClass('btn-info').addClass('btn-success');
+				$('[data-id='+ id +'] .btn-curtir').attr('data-tipo', 'deslike');
+			});
+		}
+	}
 
 })
