@@ -4,13 +4,14 @@
 
 		$page = $_GET['page'];
 		$slug = $_GET['slug'];
+		$string = $_GET['string'];
 
 		$args  =  [ 
 			'post_type' => 'post',
 			'posts_per_page' => 2,
 			'paged' => ($page) ? $page : 1,
 			'category_name' => $slug,
-			's' => ''
+			's' => $string
 		];
 		
 		$posts = new WP_Query($args);

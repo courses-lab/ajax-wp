@@ -5,8 +5,9 @@ jQuery(function($){
 
 	var page = 1;
 	var slug = $('.list-group-item.active').data('slug');
+	var string = '';
 
-	var ListarPostsAjax = function(page, slug){
+	var ListarPostsAjax = function(page, slug, string){
 
 		$.ajax({
 			url: wp.ajaxurl,
@@ -14,7 +15,8 @@ jQuery(function($){
 			data: {
 				action: 'listarPosts',
 				page: page,
-				slug: slug
+				slug: slug,
+				string: string
 			},
 			beforeSend: function(){
 				$('.progress').removeClass('d-none');
@@ -30,12 +32,12 @@ jQuery(function($){
 
 	}
 
-	ListarPostsAjax(page, slug);
+	ListarPostsAjax(page);
 
 	// Ação do botão da categoria
 	$('.list-group-item').on('click', function(){
 		slug = $(this).data('slug');
-		ListarPostsAjax(page, slug);
+		ListarPostsAjax(page, slug, string);
 
 		$('.list-group-item').removeClass('active');
 		$(this).addClass('active');
@@ -44,7 +46,7 @@ jQuery(function($){
 	// Ação do botão da paginação
 	$('body').on('click', '.page-item', function(){
 		page = $(this).find('span').text();
-		ListarPostsAjax(page, slug);
+		ListarPostsAjax(page, slug, string);
 
 		$('.page-item').removeClass('active');
 		$(this).addClass('active');
@@ -60,9 +62,17 @@ jQuery(function($){
 
 	// Ação ao digitar uma palavra na busca
 	$('#campo-busca').on('keyup', function(){
-		ListarPostsAjax(1);
+		string = $(this).val();
 
-		$('#btn-limpar').removeClass('d-none');
+		if(string.length >= 3) {
+			ListarPostsAjax(1, slug, string);
+		}
+
+		if(string.length < 1) {
+			$('#btn-limpar').addClass('d-none');
+		} else {
+			$('#btn-limpar').removeClass('d-none');
+		}
 	});		
 
 	/*****************************
