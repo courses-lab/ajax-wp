@@ -120,13 +120,15 @@ jQuery(function($){
 	* Curtir e Descurtir Posts
 	******************************/	
 
-	var curtirPostToggleAjax = function(){
+	var curtirPostToggleAjax = function(id, tipo){
 
 		$.ajax({
 			url: wp.ajaxurl,
 			type: 'GET',
 			data: {
-				action: 'curtirPostToggle'
+				action: 'curtirPostToggle',
+				id: id,
+				tipo: tipo
 			},
 			beforeSend: function(){
 				$('.progress').removeClass('d-none');
@@ -134,6 +136,18 @@ jQuery(function($){
 		})
 		.done(function(reposta){
 			$('.progress').addClass('d-none');
+			
+			if(tipo == 'like') {
+				$('[data-id='+ id +'] .btn-curtir').data('tipo', 'deslike');
+				$('[data-id='+ id +'] .btn-curtir').removeClass('btn-info').addClass('btn-success');
+			} else {
+				$('[data-id='+ id +'] .btn-curtir').data('tipo', 'like');
+				$('[data-id='+ id +'] .btn-curtir').removeClass('btn-success').addClass('btn-info');
+			}
+
+			$('[data-id='+ id +'] .btn-curtir .badge').html(resposta);
+
+
 		})	
 
 	}
@@ -142,7 +156,9 @@ jQuery(function($){
 
 	// Ação do botão curtir
 	$('body').on('click', '.btn-curtir', function(){
-		curtirPostToggleAjax();
+		let id = $(this).closest('.item').data('id');
+		let tipo = $(this).data('tipo');
+		curtirPostToggleAjax(id, tipo);
 	});
 
 })

@@ -33,7 +33,7 @@
 								</div>
 								<div class="card-footer text-right">
 									<button type="button" class="btn btn-sm btn-primary btn-detalhes">Leia mais</button>
-									<button type="button" class="btn btn-sm btn-info btn-curtir"><span class="text">Curtir</span> <span class="badge badge-light"><?php echo ($likes) ? $likes : "0"; ?></span></button>
+									<button type="button" class="btn btn-sm btn-info btn-curtir" data-tipo="like"><span class="text">Curtir</span> <span class="badge badge-light"><?php echo ($likes) ? $likes : "0"; ?></span></button>
 								</div>
 							</div>
 						</div>
