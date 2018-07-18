@@ -1,7 +1,22 @@
 <?php
 
 	function curtirPostToggle() {
-		echo "curtirPostToggle";
+		
+		$postID = 34;
+		$tipo = 'like';
+
+		$likes = get_post_meta($postID, 'likes', true);
+
+		if($tipo == 'like') {
+			update_post_meta($postID, 'likes', $likes + 1, $likes);
+		} else {
+			update_post_meta($postID, 'likes', $likes - 1, $likes);
+		}
+
+		$likes = get_post_meta($postID, 'likes', true);
+
+		echo $likes;
+
 		exit;
 	}
 

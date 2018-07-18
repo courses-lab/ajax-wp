@@ -141,7 +141,7 @@ jQuery(function($){
 	// curtirPostToggleAjax();
 
 	// Ação do botão curtir
-	$('.btn-curtir').on('click', function(){
+	$('body').on('click', '.btn-curtir', function(){
 		curtirPostToggleAjax();
 	});
 
