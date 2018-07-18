@@ -6,10 +6,11 @@ jQuery(function($){
 	var page = 1;
 	var slug = $('.list-group-item.active').data('slug');
 	var string = '';
+	var rlp = null;
 
 	var ListarPostsAjax = function(page, slug, string){
 
-		$.ajax({
+		rlp = $.ajax({
 			url: wp.ajaxurl,
 			type: 'GET',
 			data: {
@@ -20,6 +21,10 @@ jQuery(function($){
 			},
 			beforeSend: function(){
 				$('.progress').removeClass('d-none');
+				if (rlp != null) {
+					rlp.abort();
+					rlp = null;
+				}
 			}
 		})
 		.done(function(reposta){
@@ -58,6 +63,7 @@ jQuery(function($){
 
 		$(this).addClass('d-none');
 		$('#campo-busca').val('');
+		string = '';
 	});	
 
 	// Ação ao digitar uma palavra na busca
@@ -66,6 +72,8 @@ jQuery(function($){
 
 		if(string.length >= 3) {
 			ListarPostsAjax(1, slug, string);
+		} else {
+			ListarPostsAjax(1, slug);
 		}
 
 		if(string.length < 1) {
