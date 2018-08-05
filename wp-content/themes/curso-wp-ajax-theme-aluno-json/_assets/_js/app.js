@@ -29,7 +29,65 @@ jQuery(function($){
 		})
 		.done(function(resposta){
 			$('.progress').addClass('d-none');
-			$('#lista-posts').html(resposta);
+			$('#lista-posts').html('');
+
+			let success = resposta.success;
+			let pages = resposta.data.pages;
+			let posts = resposta.data.posts;
+
+			if(success) {
+				// listar posts
+				$.each(posts, function(i, post){
+					$('#lista-posts').append(
+						`
+							<div class="item" data-id="${post.ID}">
+								<div class="card">
+									<div class="card-body">
+										<h4>${post.titulo}</h4>
+										${post.resumo}
+									</div>
+									<div class="card-footer text-right">
+										<button type="button" class="btn btn-sm btn-primary btn-detalhes">Leia mais</button>
+										<button type="button" class="btn btn-sm btn-info btn-curtir" data-tipo="like"><span class="text">Curtir</span> <span class="badge badge-light">${post.likes ? post.likes : 0}</span></button>
+									</div>
+								</div>
+							</div>
+						`
+					)
+				});
+
+				// paginação
+				if(pages > 0) {
+					$('#lista-posts').append(
+						`
+							<section class="paginacao">
+								<nav>
+									<ul class="pagination">
+										
+									</ul>
+								</nav>
+							</section>
+						`
+					);
+
+					for (var i = 1; i <= pages; i++) {
+						$('.pagination').append(
+							`
+								<li class="page-item ${ page == i ? 'active' : '' }"><span class="page-link">${i}</a></li>
+							`
+						);
+					}
+				}
+			} else {
+				$('#lista-posts').html(
+					`
+						<div class="alert alert-danger text-center">
+							${resposta.data.msg}
+						</div>
+					`
+				);
+			}
+
 			visitantesLikes();
 		})
 		.fail(function(){

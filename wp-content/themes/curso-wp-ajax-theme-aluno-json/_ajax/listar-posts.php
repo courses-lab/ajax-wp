@@ -39,7 +39,7 @@
 					'ID' => get_the_ID(),
 					'titulo' => get_the_title(),
 					'resumo' => get_the_excerpt(),
-					'liks' => $likes
+					'likes' => $likes
 				];
 
 				// empurra todos os posts para o array itens
